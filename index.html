@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>璞育塾課後照顧與課業輔導班 | Puyu Juku</title>
+    <title>璞育塾 | Puyujuku</title>
+    
+    <link rel="icon" href="purejuku.png" type="image/png">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* --- 基礎設定 --- */
         :root {
-            --primary-color: #8D6E63; /* 配合璞育塾Logo的大地色系 */
-            --secondary-color: #FF7043; /* 活潑的點綴色 */
-            --accent-color: #4CAF50; /* 農業與生機的綠色 */
+            --primary-color: #8D6E63;
+            --secondary-color: #FF7043;
+            --accent-color: #4CAF50;
             --text-color: #424242;
             --bg-color: #FAFAFA;
         }
@@ -23,7 +25,6 @@
             background-color: var(--bg-color);
         }
         
-        /* --- 導覽列 --- */
         header {
             background-color: #fff;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
@@ -48,6 +49,14 @@
             align-items: center;
             gap: 10px;
         }
+        /* 如果希望 logo 旁邊也顯示小圖示，可以把下面這段註解拿掉 */
+        /*
+        .logo img {
+            height: 40px; 
+            width: auto;
+        }
+        */
+
         .nav-links a {
             margin-left: 20px;
             text-decoration: none;
@@ -59,10 +68,10 @@
             color: var(--secondary-color);
         }
 
-        /* --- 主視覺區 (Hero Section) --- */
+        /* --- 主視覺區 (Hero) --- */
         .hero {
-            /* 建議之後換成孩子們在教室或農田的合照 */
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1491841550275-ad7854e35ca6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            /* ★★★ 2. 首頁大圖 (已更新) ★★★ */
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('01.jpg');
             background-size: cover;
             background-position: center;
             height: 450px;
@@ -82,25 +91,42 @@
             font-size: 1.3rem;
             max-width: 800px;
             margin: 0 auto;
+            margin-bottom: 30px;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
         }
-        .btn-cta {
+        
+        /* 按鈕樣式 */
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        .btn {
             display: inline-block;
-            margin-top: 20px;
             padding: 10px 25px;
-            background-color: var(--secondary-color);
-            color: white;
-            text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
-            transition: transform 0.2s;
+            text-decoration: none;
+            transition: transform 0.2s, background-color 0.2s;
+            color: white;
         }
-        .btn-cta:hover {
-            transform: scale(1.05);
+        .btn-primary {
+            background-color: var(--secondary-color);
+        }
+        .btn-primary:hover {
             background-color: #F4511E;
+            transform: scale(1.05);
+        }
+        .btn-outline {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+        }
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary-color);
+            transform: scale(1.05);
         }
 
-        /* --- 通用區塊設定 --- */
         .container {
             max-width: 1100px;
             margin: 0 auto;
@@ -150,15 +176,8 @@
             position: absolute;
             left: 0;
         }
-        .info-box {
-            background: #fff;
-            padding: 20px;
-            border-left: 5px solid var(--accent-color);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            margin-top: 20px;
-        }
 
-        /* --- 課程特色 (卡片式) --- */
+        /* --- 課程特色 --- */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -197,7 +216,7 @@
         .form-container {
             position: relative;
             width: 100%;
-            height: 950px; /* 根據表單長度調整 */
+            height: 950px; 
             overflow: hidden;
         }
         .form-container iframe {
@@ -206,7 +225,6 @@
             border: 0;
         }
 
-        /* --- 頁尾 --- */
         footer {
             background-color: #3E2723;
             color: #D7CCC8;
@@ -219,19 +237,18 @@
             text-decoration: none;
         }
 
-        /* --- 手機版調整 --- */
         @media (max-width: 768px) {
             .about-grid {
                 grid-template-columns: 1fr;
             }
             .nav-links {
-                display: none; /* 手機版暫時隱藏選單，可後續加漢堡選單 */
+                display: none;
             }
             .hero h1 {
                 font-size: 2rem;
             }
-            .form-container {
-                height: 1100px; /* 手機版表單通常比較長 */
+            .btn-group {
+                flex-direction: column;
             }
         }
     </style>
@@ -240,11 +257,13 @@
 
     <header>
         <nav>
-            <a href="#" class="logo">璞育塾 Puyujuku</a>
+            <a href="#" class="logo">
+                璞育塾
+            </a>
             <div class="nav-links">
+                <a href="#register">活動報名</a>
                 <a href="#about">關於我們</a>
                 <a href="#features">課程特色</a>
-                <a href="#register">入班報名</a>
                 <a href="https://twpure.org.tw/" target="_blank">協會官網</a>
             </div>
         </nav>
@@ -252,9 +271,24 @@
 
     <div class="hero">
         <div>
-            <h1>璞育塾課後照顧班</h1>
+            <h1>璞育塾</h1>
             <p>將閒置空間化為溫馨的學習環境，陪伴後壁與柳營的孩子<br>在閱讀、手作與探索中，如璞玉般發光。</p>
-            <a href="#register" class="btn-cta">立即報名</a>
+            
+            <div class="btn-group">
+                <a href="https://twpure.org.tw/" target="_blank" class="btn btn-outline">更多資訊請前往官網</a>
+                <a href="https://www.facebook.com/TWpureCEDA" target="_blank" class="btn btn-primary"><i class="fab fa-facebook-square"></i> 追蹤 FB 粉絲專頁</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="register">
+        <h2>最新活動報名</h2>
+        <p style="text-align: center;">歡迎參加璞育塾舉辦的各項活動！<br>請填寫下方表格。若無活動顯示，請關注 FB 粉絲專頁。</p>
+        
+        <div class="form-section">
+            <div class="form-container">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSehI3btY-y2XRpUKtvXepwLPGGdeZYzR_1ji472E30uUpAEWQ/viewform?embedded=true" width="640" height="936" frameborder="0" marginheight="0" marginwidth="0">載入中…</iframe>
+            </div>
         </div>
     </div>
 
@@ -262,20 +296,19 @@
         <h2>關於璞育塾</h2>
         <div class="about-grid">
             <div class="about-text">
-                <p><strong>璞育塾</strong>的前身是後壁國小的教室宿舍，經過大家的努力，我們將這裡活化成為一個安全又溫馨的成長空間 [cite: 4]。我們不只是「安親」，更希望成為孩子在學校與家庭之外的第二個避風港。</p>
+                <p><strong>璞育塾</strong>的前身是後壁國小的教室宿舍，經過大家的努力，我們將這裡活化成為一個安全又溫馨的成長空間。我們不只是「安親」，更希望成為孩子在學校與家庭之外的第二個避風港。</p>
                 <ul>
-                    <li>提供課後照顧，讓家長能安心工作 [cite: 5]。</li>
-                    <li>重視生活品格，培養責任感與同理心 [cite: 6]。</li>
-                    <li>引導探索興趣，激發孩子內在的潛能 [cite: 7]。</li>
+                    <li>提供課後照顧，讓家長能安心工作。</li>
+                    <li>重視生活品格，培養責任感與同理心。</li>
+                    <li>引導探索興趣，激發孩子內在的潛能。</li>
                 </ul>
-                <div class="info-box">
-                    <strong>⏰ 服務時間 (學期間)：</strong><br>
-                    週一、二、四：16:00 - 18:30<br>
-                    週三、五：12:40 - 18:30 
+                <div style="background:#f9f9f9; padding:15px; border-left:4px solid var(--accent-color); margin-top:20px;">
+                    <strong>我們相信：</strong><br>
+                    每個孩子都是未經雕琢的璞玉，只要給予適當的陪伴與引導，都能綻放屬於自己的光芒。
                 </div>
             </div>
             <div class="about-img">
-                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="教室環境" style="width: 100%; border-radius: 10px;">
+                <img src="02.jpg" alt="教室環境與活動照片" style="width: 100%; border-radius: 10px;">
             </div>
         </div>
     </div>
@@ -283,7 +316,7 @@
     <div style="background-color: #f0f4c3; padding: 2rem 0;" id="features">
         <div class="container">
             <h2>多元課程內容</h2>
-            <p style="text-align: center; margin-bottom: 30px;">不僅僅是寫作業，我們透過多元活動帶領孩子認識家鄉與世界 。</p>
+            <p style="text-align: center; margin-bottom: 30px;">不僅僅是寫作業，我們透過多元活動帶領孩子認識家鄉與世界。</p>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon"><i class="fas fa-book-reader"></i></div>
@@ -309,26 +342,14 @@
         </div>
     </div>
 
-    <div class="container" id="register">
-        <h2>線上報名</h2>
-        <p style="text-align: center;">歡迎填寫下方表格加入我們。若有任何疑問，歡迎聯繫社工。</p>
-        
-        <div class="form-section">
-            <div class="form-container">
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSehI3btY-y2XRpUKtvXepwLPGGdeZYzR_1ji472E30uUpAEWQ/viewform?embedded=true" width="640" height="936" frameborder="0" marginheight="0" marginwidth="0">載入中…</iframe>
-            </div>
-        </div>
-    </div>
-
     <footer>
         <h3>社團法人臺灣璞育文教發展協會</h3>
-        <p>Taiwan Puyu Culture and Education Development Association </p>
-        <p>服務地點：台南市後壁區 / 柳營區</p>
+        <p>Taiwan Puyu Culture and Education Development Association</p>
         <p>
             <a href="https://twpure.org.tw/" target="_blank">參觀協會官網</a> | 
-            <a href="https://github.com/您的帳號/puyujuku-web" target="_blank">GitHub Repository</a>
+            <a href="https://www.facebook.com/TWpureCEDA" target="_blank">Facebook 粉絲專頁</a>
         </p>
-        <p style="font-size: 0.8rem; margin-top: 20px;">Copyright © 2026 璞育塾. All rights reserved.</p>
+        <p style="font-size: 0.8rem; margin-top: 20px;">Copyright © 社團法人臺灣璞育文教發展協會. All rights reserved.</p>
     </footer>
 
 </body>
