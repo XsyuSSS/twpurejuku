@@ -35,27 +35,22 @@
         nav {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 1rem;
+            padding: 0.5rem 1rem; /* 稍微調整內距讓圖片置中更好看 */
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+        
+        /* ★★★ Logo 圖片設定 ★★★ */
         .logo {
-            font-size: 1.6rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 10px;
+            text-decoration: none;
         }
-        /* 如果希望 logo 旁邊也顯示小圖示，可以把下面這段註解拿掉 */
-        /*
         .logo img {
-            height: 40px; 
-            width: auto;
+            height: 50px; /* 設定圖片高度，確保不會太大 */
+            width: auto;  /* 寬度自動調整 */
         }
-        */
 
         .nav-links a {
             margin-left: 20px;
@@ -70,7 +65,7 @@
 
         /* --- 主視覺區 (Hero) --- */
         .hero {
-            /* ★★★ 2. 首頁大圖 (已更新) ★★★ */
+            /* ★★★ 2. 首頁大圖 ★★★ */
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('01.jpg');
             background-size: cover;
             background-position: center;
@@ -258,8 +253,9 @@
     <header>
         <nav>
             <a href="#" class="logo">
-                璞育塾
+                <img src="purejuku.png" alt="璞育塾 Logo">
             </a>
+            
             <div class="nav-links">
                 <a href="#register">活動報名</a>
                 <a href="#about">關於我們</a>
