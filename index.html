@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>璞育塾課輔班 | Puyu Juku</title>
+    <title>璞育塾課後照顧與課業輔導班 | Puyu Juku</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* --- 基礎設定 --- */
         :root {
-            --primary-color: #4CAF50; /* 璞育的綠色意象 */
-            --secondary-color: #ff9800; /* 溫暖的橘色 */
-            --text-color: #333;
-            --bg-color: #f9f9f9;
+            --primary-color: #8D6E63; /* 配合璞育塾Logo的大地色系 */
+            --secondary-color: #FF7043; /* 活潑的點綴色 */
+            --accent-color: #4CAF50; /* 農業與生機的綠色 */
+            --text-color: #424242;
+            --bg-color: #FAFAFA;
         }
         body {
-            font-family: "微軟正黑體", sans-serif;
+            font-family: "微軟正黑體", "Microsoft JhengHei", sans-serif;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
+            line-height: 1.8;
             color: var(--text-color);
             background-color: var(--bg-color);
         }
@@ -24,13 +26,13 @@
         /* --- 導覽列 --- */
         header {
             background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
         nav {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 1rem;
             display: flex;
@@ -38,111 +40,199 @@
             align-items: center;
         }
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: bold;
             color: var(--primary-color);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         .nav-links a {
             margin-left: 20px;
             text-decoration: none;
             color: var(--text-color);
             font-weight: 500;
+            transition: color 0.3s;
         }
         .nav-links a:hover {
-            color: var(--primary-color);
+            color: var(--secondary-color);
         }
 
         /* --- 主視覺區 (Hero Section) --- */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); /* 暫時用圖庫圖片，之後可換成孩子的活動照 */
+            /* 建議之後換成孩子們在教室或農田的合照 */
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1491841550275-ad7854e35ca6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
-            height: 400px;
+            height: 450px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             text-align: center;
+            padding: 0 20px;
         }
         .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
         }
         .hero p {
-            font-size: 1.2rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+        }
+        .btn-cta {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 25px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        .btn-cta:hover {
+            transform: scale(1.05);
+            background-color: #F4511E;
         }
 
         /* --- 通用區塊設定 --- */
         .container {
-            max-width: 1000px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            padding-bottom: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
         }
         section {
-            padding: 2rem 0;
-            border-bottom: 1px solid #eee;
+            margin-bottom: 2rem;
         }
         h2 {
             color: var(--primary-color);
-            border-left: 5px solid var(--secondary-color);
-            padding-left: 10px;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary-color);
+            margin: 10px auto;
+            border-radius: 2px;
         }
 
-        /* --- 活動報名區 (Google Form 嵌入) --- */
+        /* --- 關於我們 --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .about-text {
+            font-size: 1.1rem;
+        }
+        .about-text ul {
+            list-style: none;
+            padding: 0;
+        }
+        .about-text li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        .about-text li::before {
+            content: '🌱';
+            position: absolute;
+            left: 0;
+        }
+        .info-box {
+            background: #fff;
+            padding: 20px;
+            border-left: 5px solid var(--accent-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+
+        /* --- 課程特色 (卡片式) --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .feature-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+        .feature-title {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        /* --- 報名表單區 --- */
+        .form-section {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
         .form-container {
             position: relative;
+            width: 100%;
+            height: 950px; /* 根據表單長度調整 */
             overflow: hidden;
-            padding-top: 56.25%; /* 16:9 比例 */
         }
         .form-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
             border: 0;
         }
 
-        /* --- 活動剪影區 (簡單網格) --- */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
-        .gallery-item {
-            background: #eee;
-            height: 200px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #888;
-            overflow: hidden;
-        }
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-        .gallery-item img:hover {
-            transform: scale(1.05);
-        }
-
         /* --- 頁尾 --- */
         footer {
-            background-color: #333;
-            color: white;
+            background-color: #3E2723;
+            color: #D7CCC8;
             text-align: center;
-            padding: 2rem 1rem;
-            margin-top: 2rem;
+            padding: 3rem 1rem;
+            margin-top: 4rem;
+        }
+        footer a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        /* --- 手機版調整 --- */
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none; /* 手機版暫時隱藏選單，可後續加漢堡選單 */
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .form-container {
+                height: 1100px; /* 手機版表單通常比較長 */
+            }
         }
     </style>
 </head>
@@ -153,48 +243,92 @@
             <a href="#" class="logo">璞育塾 Puyujuku</a>
             <div class="nav-links">
                 <a href="#about">關於我們</a>
-                <a href="#register">活動報名</a>
-                <a href="#gallery">活動剪影</a>
+                <a href="#features">課程特色</a>
+                <a href="#register">入班報名</a>
+                <a href="https://twpure.org.tw/" target="_blank">協會官網</a>
             </div>
         </nav>
     </header>
 
     <div class="hero">
         <div>
-            <h1>陪伴孩子，璞玉成器</h1>
-            <p>台南後壁・柳營課後輔導班</p>
+            <h1>璞育塾課後照顧班</h1>
+            <p>將閒置空間化為溫馨的學習環境，陪伴後壁與柳營的孩子<br>在閱讀、手作與探索中，如璞玉般發光。</p>
+            <a href="#register" class="btn-cta">立即報名</a>
         </div>
     </div>
 
-    <div class="container">
-        <section id="about">
-            <h2>關於璞育塾</h2>
-            <p>我們致力於為後壁與柳營地區的孩子提供溫暖的課後陪伴與多元學習機會。透過閱讀、手作與戶外探索，讓每個孩子都能像璞玉一樣，經過琢磨後散發獨特光芒。</p>
-        </section>
-
-        <section id="register">
-            <h2>最新活動報名</h2>
-            <p>請填寫下方表格報名我們的最新活動。資料將直接傳送至我們的系統。</p>
-            
-            <div style="text-align: center; padding: 20px; background: #f0f0f0; border-radius: 8px;">
-                <p>（請在此處嵌入 Google 表單 iframe 代碼）</p>
+    <div class="container" id="about">
+        <h2>關於璞育塾</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p><strong>璞育塾</strong>的前身是後壁國小的教室宿舍，經過大家的努力，我們將這裡活化成為一個安全又溫馨的成長空間 [cite: 4]。我們不只是「安親」，更希望成為孩子在學校與家庭之外的第二個避風港。</p>
+                <ul>
+                    <li>提供課後照顧，讓家長能安心工作 [cite: 5]。</li>
+                    <li>重視生活品格，培養責任感與同理心 [cite: 6]。</li>
+                    <li>引導探索興趣，激發孩子內在的潛能 [cite: 7]。</li>
+                </ul>
+                <div class="info-box">
+                    <strong>⏰ 服務時間 (學期間)：</strong><br>
+                    週一、二、四：16:00 - 18:30<br>
+                    週三、五：12:40 - 18:30 
                 </div>
-            </section>
-
-        <section id="gallery">
-            <h2>活動剪影</h2>
-            <p>孩子們的精彩時刻。</p>
-            <div class="gallery-grid">
-                <div class="gallery-item">活動照片 1</div>
-                <div class="gallery-item">活動照片 2</div>
-                <div class="gallery-item">活動照片 3</div>
             </div>
-        </section>
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="教室環境" style="width: 100%; border-radius: 10px;">
+            </div>
+        </div>
+    </div>
+
+    <div style="background-color: #f0f4c3; padding: 2rem 0;" id="features">
+        <div class="container">
+            <h2>多元課程內容</h2>
+            <p style="text-align: center; margin-bottom: 30px;">不僅僅是寫作業，我們透過多元活動帶領孩子認識家鄉與世界 。</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-book-reader"></i></div>
+                    <div class="feature-title">課業陪伴</div>
+                    <p>陪伴學童完成學校作業，並提供晚餐，培養規律的生活習慣。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-palette"></i></div>
+                    <div class="feature-title">多元培力</div>
+                    <p>透過戲劇、桌遊、美術與手作，啟發孩子的創造力與自信心。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-seedling"></i></div>
+                    <div class="feature-title">食農教育</div>
+                    <p>結合菜園種植與烹飪，讓孩子從產地到餐桌，學習對食物的尊重。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-map-marked-alt"></i></div>
+                    <div class="feature-title">地方文史</div>
+                    <p>走訪社區與訪問長輩，從家鄉故事中培養對土地的認同感。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="register">
+        <h2>線上報名</h2>
+        <p style="text-align: center;">歡迎填寫下方表格加入我們。若有任何疑問，歡迎聯繫社工。</p>
+        
+        <div class="form-section">
+            <div class="form-container">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSehI3btY-y2XRpUKtvXepwLPGGdeZYzR_1ji472E30uUpAEWQ/viewform?embedded=true" width="640" height="936" frameborder="0" marginheight="0" marginwidth="0">載入中…</iframe>
+            </div>
+        </div>
     </div>
 
     <footer>
-        <p>Copyright © 2026 璞育塾課輔班. All rights reserved.</p>
-        <p>地點：台南市後壁區 / 柳營區</p>
+        <h3>社團法人臺灣璞育文教發展協會</h3>
+        <p>Taiwan Puyu Culture and Education Development Association </p>
+        <p>服務地點：台南市後壁區 / 柳營區</p>
+        <p>
+            <a href="https://twpure.org.tw/" target="_blank">參觀協會官網</a> | 
+            <a href="https://github.com/您的帳號/puyujuku-web" target="_blank">GitHub Repository</a>
+        </p>
+        <p style="font-size: 0.8rem; margin-top: 20px;">Copyright © 2026 璞育塾. All rights reserved.</p>
     </footer>
 
 </body>
